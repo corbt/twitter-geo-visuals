@@ -28,4 +28,6 @@ class RecordingListener(tweepy.streaming.StreamListener):
         sleep(60)
 
 stream = tweepy.Stream(auth, RecordingListener())
+
+print "Beginning streaming"
 stream.sample()
