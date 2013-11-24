@@ -27,8 +27,5 @@ class RecordingListener(tweepy.streaming.StreamListener):
         print "Timeout at "+datetime.datetime.now()
         sleep(60)
 
-print json.loads(open("raw\\2013-11-23-23.09.40.918000.json").read())
-
-# stream = tweepy.Stream(auth, RecordingListener())
-
-# stream.sample()
+stream = tweepy.Stream(auth, RecordingListener())
+stream.sample()
