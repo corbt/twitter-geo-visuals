@@ -3,11 +3,12 @@
 	[
 		{
 			"follow_symlinks": true,
-			"path": "C:\\Users\\Kyle\\projects\\twitter-geo-visuals"
+			"path": "."
 		}
 	],
 	"settings":
 	{
-		"tab_size": 4
+		"tab_size": 4,
+		"convert_tabs_to_spaces": true
 	}
 }

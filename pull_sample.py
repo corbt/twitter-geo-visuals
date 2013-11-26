@@ -6,8 +6,6 @@ secrets = json.loads(open("./secrets.json").read())
 auth = tweepy.OAuthHandler(secrets['consumer_key'], secrets['consumer_secret'])
 auth.set_access_token(secrets['access_token'], secrets['access_secret'])
 
-
-
 class RecordingListener(tweepy.streaming.StreamListener):
     """Saves the tweet data to a log file"""
 
@@ -29,10 +27,10 @@ class RecordingListener(tweepy.streaming.StreamListener):
         return True
 
     def on_error(self, status):
-        print status
+        print str(datetime.datetime.now())+" Error: "+str(status)
 
     def on_timeout(self):
-        print "Timeout at "+datetime.datetime.now()
+        print str(datetime.datetime.now())+"Timeout"
         sleep(60)
 
 stream = tweepy.Stream(auth, RecordingListener(1))
