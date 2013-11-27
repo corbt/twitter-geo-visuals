@@ -36,4 +36,8 @@ class RecordingListener(tweepy.streaming.StreamListener):
 stream = tweepy.Stream(auth, RecordingListener(1))
 
 print "Beginning streaming"
-stream.sample()
+while True:
+    try:
+        stream.sample()
+    except Exception:
+        print "Exception, but keep collecting"
