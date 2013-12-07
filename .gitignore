@@ -40,3 +40,6 @@ nosetests.xml
 
 # Secrets
 secrets.json
+
+# Data files
+*.json
