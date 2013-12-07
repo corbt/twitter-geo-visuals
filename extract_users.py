@@ -1,15 +1,13 @@
 import os, json
 
-input_file = '24h_10k'
-
-# def get_country(tweet):
+input_file = '24h_5k'
 
 with open('processed/'+input_file+'.json') as in_file:
     data = json.loads(in_file.readline())
     print json.dumps(data, indent=2)
 
 with open('processed/'+input_file+'.json') as in_file:
-    with open('processed/'+input_file+'_processed.json', 'w') as out_file:
+    with open('processed/'+input_file+'_users.json', 'w') as out_file:
         for index,line in enumerate(in_file):
             try:
                 tweet = json.loads(line)

@@ -3,8 +3,8 @@
 import os, random, json
 
 in_file = "raw/2013-11-27-05.11.56.569021.json"
-out_file = "processed/24h_10k.json"
-num_selected = 10000
+out_file = "processed/24h_5k.json"
+num_selected = 5000
 
 lines_with_location = []
 with open(in_file) as f:
