@@ -43,10 +43,10 @@ with open("processed/"+input_file+".json") as in_f:
                 user['followers'] = []
                 try:
                     time.sleep(40)
-                    followers = api.followers(user['screen_name'])
+                    followers = api.followers(user['id'])
                     for follower in followers:
                         rep = {}
-                        for attr in ['lang', 'location', 'screen_name', 'followers_count', 'time_zone']:
+                        for attr in ['lang', 'location', 'screen_name', 'followers_count', 'time_zone', 'id']:
                             rep[attr] = getattr(follower, attr)
                         user['followers'].append(rep)
                 except:
