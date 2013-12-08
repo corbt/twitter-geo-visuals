@@ -7,10 +7,10 @@ hm = heatmap.Heatmap()
 points = []
 
 with open("raw/"+input_file+".json") as in_f:
-	for line in in_f:
-		tweet = json.loads(line)
-		coords = tweet['coordinates']['coordinates']
-		points.append(tuple(coords))
+    for line in in_f:
+        tweet = json.loads(line)
+        coords = tweet['coordinates']['coordinates']
+        points.append(tuple(coords))
 
 
 img = hm.heatmap(points, dotsize=5, opacity=255, area=((-180,-90),(180,90)))
