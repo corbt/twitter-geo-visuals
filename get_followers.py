@@ -13,6 +13,7 @@ api = tweepy.API(auth)
 output_file = "processed/"+input_file+"_followers.json"
 
 # Read in any processed followers so far and use them
+num_unprocessed = 0
 if os.path.isfile(output_file):
     with open("processed/"+input_file+".json") as in_f:
         with open(output_file) as out_f:
@@ -26,14 +27,19 @@ if os.path.isfile(output_file):
                             buffer_f.write(json.dumps(processed)+'\n')
                         else:
                             print "what a disappointment"
+                            num_unprocessed += 1
                             buffer_f.write(json.dumps(unprocessed)+'\n')
                     except:
                         print "end of input file reached"
                 for line in in_f:
+                    num_unprocessed += 1
                     buffer_f.write(line)
 
 os.rename("processed/tmp.json", "processed/"+input_file+".json")
 
+print "{0} users remaining to be processed".format(num_unprocessed)
+
+failed = 0
 with open("processed/"+input_file+".json") as in_f:
     with open(output_file, 'w') as out_f:
         for i,line in enumerate(in_f):
@@ -50,8 +56,11 @@ with open("processed/"+input_file+".json") as in_f:
                             rep[attr] = getattr(follower, attr)
                         user['followers'].append(rep)
                 except:
+                    failed += 1
                     print "\tfollowers retrieval failed"
             else:
                 print "\tfollowers already found"
 
             out_f.write(json.dumps(user)+'\n')
+
+print "Failed to process {0} users".format(failed)
