@@ -48,7 +48,7 @@ with open("processed/"+input_file+".json") as in_f:
             if 'followers' not in user or len(user['followers']) == 0:
                 user['followers'] = []
                 try:
-                    time.sleep(40)
+                    time.sleep(60)
                     followers = api.followers(user['id'])
                     for follower in followers:
                         rep = {}
