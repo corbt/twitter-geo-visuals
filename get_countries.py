@@ -22,7 +22,7 @@ def get_country(location):
         return None
                 
 with open("processed/"+input_file+".json") as in_f:
-    with open(output_file, 'w') as out_f:
+    with open("processed/"+input_file+"_countries.json", 'w') as out_f:
         for i,line in enumerate(in_f):
             print "Finding country for user {0}".format(i)
             try:
