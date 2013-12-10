@@ -21,19 +21,24 @@ def get_country(location):
     else:
         return None
                 
-# with open("processed/"+input_file+".json") as in_f:
-#     with open(output_file, 'w') as out_f:
-#         for line in in_f:
-#             user = json.loads(line)
-#             user['country'] = get_country(user['location'])
-#             if user['country'] != None:
-#                 followers = []
-#                 for follower in user['followers']:
-#                     if len(followers) < max_followers_to_process:
-#                         follower['country'] = get_country(follower['location'])
-#                         if follower['country'] != None:
-#                             followers.append(follower)
-#                 user['followers'] = followers
-#                 out_f.write(json.dumps(user)+'\n')
-
-                # print json.dumps(user, indent=2)
+with open("processed/"+input_file+".json") as in_f:
+    with open(output_file, 'w') as out_f:
+        for i,line in enumerate(in_f):
+            print "Finding country for user {0}".format(i)
+            try:
+                user = json.loads(line)
+                user['country'] = get_country(user['location'])
+                if user['country'] != None:
+                    followers = []
+                    for follower in user['followers']:
+                        try:
+                            if len(followers) < max_followers_to_process:
+                                follower['country'] = get_country(follower['location'])
+                                if follower['country'] != None:
+                                    followers.append(follower)
+                        except:
+                            print "\tOne follower failed"
+                    user['followers'] = followers
+                    out_f.write(json.dumps(user)+'\n')
+            except:
+                print "\tWhole process failed"
