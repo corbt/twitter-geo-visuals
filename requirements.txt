@@ -2,3 +2,5 @@ tweepy
 lxml
 pykml
 requests
+pycountry
+networkx
