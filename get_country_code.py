@@ -1,4 +1,5 @@
 import pycountry
+from incf.countryutils import transformations
 
 name_map = {
     "Venezuela": "Venezuela, Bolivarian Republic of",
@@ -23,6 +24,10 @@ name_map = {
     "Kosovo": "Serbia"
 }
 
+continent_map = {
+    "SSD": "Africa"
+}
+
 def get_cc(name):
     if name in name_map:
         name = name_map[name]
@@ -30,3 +35,11 @@ def get_cc(name):
         return pycountry.countries.get(name=name).alpha3
     except:
         return None
+
+def get_continent(name):
+    cc = get_cc(name)
+    if cc == None:
+        return 'Unknown'
+    if cc in continent_map:
+        return continent_map[cc]
+    return transformations.cca_to_ctn(cc)

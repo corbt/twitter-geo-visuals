@@ -3,4 +3,5 @@ lxml
 pykml
 requests
 pycountry
+incf.countryutils
 networkx
