@@ -43,3 +43,7 @@ secrets.json
 
 # Data files
 *.json
+*.pypeline/
+
+# Virtualenv
+env*/
